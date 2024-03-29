@@ -12,7 +12,15 @@ const data = require("./data");
  */
 
  // Your code
+ function showPlayers(){
+    const player = data.getPlayers();
+    for(let i = 0; i < player.length; i++){
+        console.log("PLAYER " + (i + 1));
+        console.log("NAME: " + player[i].name);
+        console.log("LASTNAME: " + player[i].lastname);
+    }
 
+ }showPlayers();
 
 
 /**
@@ -21,7 +29,18 @@ const data = require("./data");
  */
 
 // Your code
+function playerNameLength(){
+    const player = data.getPlayers();
+    let names = [];
+    for(let i = 0; i < player.length; i++){
+        names.push(player[i].name);
+    }
+    names.sort(function(a, b){
+        return b.length - a.length;
+    });
+    console.log(names);
 
+}playerNameLength();
 
 
 
@@ -35,6 +54,15 @@ const data = require("./data");
  */
 
 // Your code
+function averageGoals(){
+    const player = data.getPlayers();
+    let totalScoringChance = 0;
+    for(let i = 0; i < player.length; i++){
+        totalScoringChance += player[i].scoringChance;
+    }
+    averageGoals = totalScoringChance/100;
+    console.log("The average goals in a match are: " + averageGoals);
+}averageGoals();
 
 
 
@@ -44,7 +72,15 @@ const data = require("./data");
  */
 
 // Your code
+function findPlayer(name){
+    const player = data.getPlayers();
+    for(let i = 0; i < player.length; i++){
+        if(player[i].name == name){
+            console.log(player[i].name + "'s position is: " + player[i].position);
+        }
+    }
 
+}findPlayer("Tammy");
 
 
 /**
@@ -57,3 +93,14 @@ const data = require("./data");
  */
 
 // Your code
+/**
+ * Without researching or cheating i am honestly not sure on the method
+ * For creating this function but generally here is how i would go about it:
+ * Create function
+ * Collect data from getPlayers
+ * Create array teamA = 0;
+ * Create array teamB = 0;
+ * Count number of players and every second player = teamA.push else teamB.push
+ * Caluclate the average scores of TeamA and B
+ * Log the match scores and output to console.
+ */
